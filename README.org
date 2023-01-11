@@ -1,0 +1,36 @@
+#+title: Cryptography Many Time Pad
+
+* Description
+
+We a message sample that was said to have ciphered messages that used
+the same time pad key multiple times. Our task was the exploit this
+issue in order to find out the actual content off all the messages.
+
+* Solution
+
+Our approach to it was to:
+- Implement the cipher function, a bit-wise XOR operation to be
+  performed between two strings;
+- Decode input into strings, which was given in hexadecimal encoding;
+- Perform a dragging XOR using common English words over the length of
+  of the result of XORing two of the known ciphers in order to find
+  familiar words related to the key
+- Once enough dragging had been done we were able to find the key and
+  cipher it over the ciphered messages in order to find their original
+  content
+
+* Related links and tips
+
+[[https://www.notion.so/paritytechnologies/Cryptography-Many-Time-Pad-223360bf26844b5ea4198cc94d517749][Notion post about the problem]]
+
+Tips given during the assignment:
+#+BEGIN_QUOTE
+Here are the hints so far:
+
+The messages (and if you didn't change it this time, the key) are in english, unicode encoded.
+The inverse of XOR is XOR itself.
+XOR is a bitwise operation, and characters for messages are UTF-8 encoded
+XOR the ciphertexts together, and consider what happens when a space is XORed with a character in [a-zA-Z].
+Consider Crib dragging: https://samwho.dev/blog/toying-with-cryptography-crib-dragging/ .
+(This is basically a full solution to find the key, and should unblock almost everyone)
+#+END_QUOTE
